@@ -1124,6 +1124,9 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
                 // This gives a warning on iOS 8, however it works, see #703
                 self.hudView.alpha = 1.0f;
             }
+            
+            // Update alpha
+            self.hudView.contentView.alpha = 1.0f;
 #else
             self.hudView.alpha = 1.0f;
             self.hudView.contentView.alpha = 1.0f;
@@ -1209,6 +1212,8 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
                     // This gives a warning on iOS 8, however it works, see #703
                     strongSelf.hudView.alpha = 0.0f;
                 }
+
+                strongSelf.hudView.contentView.alpha = 0.0f;
 #else
                 strongSelf.hudView.alpha = 0.0f;
                 strongSelf.hudView.contentView.alpha = 0.0f;
