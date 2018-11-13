@@ -80,7 +80,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 - (void)showProgress:(float)progress status:(NSString *)status inView:(UIView*)view;
 - (void)showImage:(UIImage*)image status:(NSString*)status duration:(NSTimeInterval)duration;
 - (void)showImage:(UIImage*)image status:(NSString*)status duration:(NSTimeInterval)duration inView: (UIView*)view;
-- (void)showStatus:(NSString*)status;
 - (void)dismiss;
 - (void)dismissWithDelay:(NSTimeInterval)delay completion:(SVProgressHUDDismissCompletion)completion;
 
@@ -91,7 +90,6 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 - (UIColor*)backgroundColorForStyle;
 
 @end
-
 @implementation SVProgressHUD {
     BOOL _isInitializing;
 }
@@ -981,7 +979,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
             }
             
             // Show
-            [strongSelf showStatus:status];
+            [strongSelf setStatus:status];
         }
     }];
     
@@ -1058,7 +1056,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
             strongSelf.statusLabel.text = status;
             
             // Show
-            [strongSelf showStatus:status];
+            [strongSelf setStatus:status];
             
             // An image will dismissed automatically. Therefore we start a timer
             // which then will call dismiss after the predefined duration
